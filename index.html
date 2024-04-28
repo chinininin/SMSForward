@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webhook Test</title>
+</head>
+<body>
+    <h1>Webhook Test Page</h1>
+    <form id="myForm">
+        <label for="message">Message:</label><br>
+        <input type="text" id="message" name="message"><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            fetch('http://127.0.0.1:5000/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                console.log('Message sent successfully');
+            })
+            .catch(error => {
+                console.error('There was an error sending the message:', error);
+            });
+        });
+    </script>
+</body>
+</html>
