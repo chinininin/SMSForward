@@ -17,7 +17,7 @@
         document.getElementById("myForm").addEventListener("submit", function(event) {
             event.preventDefault();
             var formData = new FormData(this);
-            fetch('http://127.0.0.1:5000/', {
+            fetch('https://cn-cd-dx-tmp7.natfrp.cloud:53417/', {
                 method: 'POST',
                 body: formData
             })
